@@ -1,10 +1,5 @@
 use std::env;
 
-/*
-    - read in cli args
-    - create an infinite run loop
-*/
-
 #[derive(Debug)]
 struct Args {
     arg1: Option<String>,
@@ -38,7 +33,11 @@ fn main() {
         return
     }
     
-    println!("{:?}", args);
+    loop {
+        //get a line of input
+        //parse input
+        //run it I guess lol
+    }
 }
 
 fn print_help() {
