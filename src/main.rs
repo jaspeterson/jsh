@@ -1,6 +1,7 @@
+mod cli_io;
+
 use std::env;
 
-#[derive(Debug)]
 struct Args {
     arg1: Option<String>,
     help: bool,
