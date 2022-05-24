@@ -1,14 +1,14 @@
-// Interpreter object for parsing and interpreting a line of input
-pub struct Interpreter<'a> {
-    tokens: Vec<&'a str>,
+// Tokenizer object for parsing a line of input
+pub struct Tokenizer<'a> {
+    pub tokens: Vec<&'a str>,
 }
 
-impl Interpreter<'_> {
+impl Tokenizer<'_> {
     // Constructor method that takes a line of input deliminated by spaces and separates it into a vector of tokens
-    pub fn tokenize<'a>(&self, s: &'a String) -> Interpreter<'a> {
-        let mut v: Vec<&str> = s.as_str().split(' ').collect();
+    pub fn tokenize<'a>(s: &'a String) -> Tokenizer<'a> {
+        let mut v: Vec<&str> = s.split(' ').collect();
         trim_spaces(&mut v);
-        Interpreter {
+        Tokenizer {
             tokens: v,
         }
     }

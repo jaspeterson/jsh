@@ -33,12 +33,8 @@ fn main() {
         print_help();
         return
     }
-    
-    loop {
-        //get a line of input
-        //parse input
-        //run it I guess lol
-    }
+
+    cli_io::receive_user_input();
 }
 
 fn print_help() {
