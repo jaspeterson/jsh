@@ -34,7 +34,15 @@ fn main() {
         return
     }
 
-    cli_io::receive_user_input();
+    loop {
+        let input = cli_io::receive_user_input();
+        match input {
+            Ok(tokens) => {
+                println!("{:?}", tokens);
+            },
+            Err(_error) => continue,
+        }
+    }
 }
 
 fn print_help() {

@@ -2,20 +2,18 @@ pub mod tokenizer;
 
 use std::io::{self, BufRead, Write};
 
-pub fn receive_user_input() {
-    loop {
-        //get a line of input
-        let input = prompt_input();
-        match input {
-            Ok(cmd) => {
-                println!("got a line: {}", cmd);
-                let cmd = String::from(cmd.trim());
-                let i = tokenizer::Tokenizer::tokenize(&cmd);
-
-                println!("{:?}", i.tokens);
-            },
-            Err(error) => println!("got an error: {}", error),
-        }
+pub fn receive_user_input() -> Result<Vec<String>, io::Error> {
+    let input = prompt_input();
+    match input {
+        Ok(cmd) => {
+            let cmd = String::from(cmd.trim());
+            let tokens = tokenizer::tokenize(&cmd);
+            Ok(tokens)
+        },
+        Err(error) => {
+            println!("cannot read user input");
+            Err(error)
+        },
     }
 }
 
