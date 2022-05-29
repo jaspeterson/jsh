@@ -1,4 +1,5 @@
 mod cli_io;
+mod environment;
 
 use std::env;
 
@@ -33,6 +34,10 @@ fn main() {
         print_help();
         return
     }
+
+    //create environment
+    let mut env = environment::Environment::new();
+    
 
     loop {
         let input = cli_io::receive_user_input();
