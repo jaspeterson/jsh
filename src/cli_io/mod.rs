@@ -1,4 +1,4 @@
-pub mod tokenizer;
+mod tokenizer;
 
 use std::io::{self, BufRead, Write};
 

@@ -14,4 +14,8 @@ impl Environment {
     pub fn add_var(&mut self, key: String, val: String) {
         self.vars.insert(key, val);
     }
+
+    pub fn check_var(&self, key: &String) -> Option<&String> {
+        self.vars.get(key)
+    }
 }
