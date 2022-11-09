@@ -1,5 +1,6 @@
 mod cli_io;
 mod environment;
+mod keyword;
 
 use std::env;
 
@@ -37,13 +38,18 @@ fn main() {
 
     //create environment
     let mut env = environment::Environment::new();
-    
+    let kr = keyword::generate_registry();
 
     loop {
         let input = cli_io::receive_user_input();
         match input {
             Ok(tokens) => {
-                println!("{:?}", tokens);
+                if let Some(v) = tokens.get(0) {
+                    match kr.run_keyword(v.to_string(), &tokens[1..]) {
+                        Err(e) => println!("{}", e),
+                        _ => (),
+                    }
+                }
             },
             Err(_error) => continue,
         }
